@@ -38,7 +38,7 @@ const SchoolsPartnership = () => {
             </ul>
 
             <Button asChild size="lg" className="paata-btn-secondary">
-              <Link to="/schools">Become a Partner School</Link>
+              <Link to="/schools">Become a Partner School Today</Link>
             </Button>
           </div>
 

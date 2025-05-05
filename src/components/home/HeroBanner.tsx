@@ -23,10 +23,10 @@ const HeroBanner = () => {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="paata-btn-primary">
-                <Link to="/courses">Explore Courses</Link>
+                <Link to="/courses">Explore Our Interactive Courses</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full">
-                <Link to="/kits">Browse Learning Kits</Link>
+                <Link to="/kits">Browse Educational Learning Kits</Link>
               </Button>
             </div>
             

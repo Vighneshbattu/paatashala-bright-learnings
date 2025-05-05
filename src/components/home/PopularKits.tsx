@@ -9,7 +9,7 @@ const kits = [
   {
     id: 1,
     name: "Electronics Explorer",
-    description: "A comprehensive kit for learning basic electronics through hands-on circuit building.",
+    description: "A comprehensive kit for learning basic electronics through hands-on circuit building and experimentation.",
     image: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&q=80&w=400",
     grade: "Grades 6-8",
     color: "bg-paata-blue"
@@ -17,7 +17,7 @@ const kits = [
   {
     id: 2,
     name: "Chemistry Adventure",
-    description: "Safe and educational chemistry experiments for understanding reactions and properties.",
+    description: "Safe and educational chemistry experiments for understanding reactions and properties of materials.",
     image: "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?auto=format&fit=crop&q=80&w=400",
     grade: "Grades 7-9",
     color: "bg-paata-green"
@@ -25,7 +25,7 @@ const kits = [
   {
     id: 3,
     name: "Robotics Starter",
-    description: "Introduction to robotics with programmable components and step-by-step instructions.",
+    description: "Introduction to robotics with programmable components and step-by-step instructions for building your first robot.",
     image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=400",
     grade: "Grades 8-10",
     color: "bg-paata-orange"
@@ -33,7 +33,7 @@ const kits = [
   {
     id: 4,
     name: "Eco Explorer",
-    description: "Environmental science kit with tools for studying ecosystems and sustainability.",
+    description: "Environmental science kit with tools for studying ecosystems and sustainability in your local environment.",
     image: "https://images.unsplash.com/photo-1507424739242-2c12c64d0ebc?auto=format&fit=crop&q=80&w=400",
     grade: "Grades 4-6",
     color: "bg-paata-teal"
@@ -68,7 +68,7 @@ const PopularKits = () => {
                 <p className="text-gray-600 mb-4">{kit.description}</p>
                 <Button asChild variant="outline" className="w-full rounded-full">
                   <Link to={`/kits/${kit.id}`}>
-                    Learn More
+                    Learn More About This Kit
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -79,7 +79,7 @@ const PopularKits = () => {
 
         <div className="text-center mt-12">
           <Button asChild size="lg" className="paata-btn-primary">
-            <Link to="/kits">View All Kits</Link>
+            <Link to="/kits">View All Educational Kits</Link>
           </Button>
         </div>
       </div>

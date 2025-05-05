@@ -24,25 +24,25 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <Link to="/" className="font-medium hover:text-paata-blue transition-colors">Home</Link>
           <Link to="/about" className="font-medium hover:text-paata-blue transition-colors">About Us</Link>
-          <Link to="/courses" className="font-medium hover:text-paata-blue transition-colors">Courses</Link>
+          <Link to="/courses" className="font-medium hover:text-paata-blue transition-colors">Educational Courses</Link>
           <Link to="/kits" className="font-medium hover:text-paata-blue transition-colors">Learning Kits</Link>
           <Link to="/schools" className="font-medium hover:text-paata-blue transition-colors">For Schools</Link>
-          <Link to="/blog" className="font-medium hover:text-paata-blue transition-colors">Blog</Link>
-          <Link to="/contact" className="font-medium hover:text-paata-blue transition-colors">Contact</Link>
+          <Link to="/blog" className="font-medium hover:text-paata-blue transition-colors">Education Blog</Link>
+          <Link to="/contact" className="font-medium hover:text-paata-blue transition-colors">Contact Us</Link>
         </nav>
 
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <Button asChild variant="outline" className="rounded-full px-6">
-            <Link to="/login">Log In</Link>
+            <Link to="/login">Log In To Your Account</Link>
           </Button>
           <Button asChild className="rounded-full bg-paata-orange hover:bg-amber-500 px-6">
-            <Link to="/signup">Sign Up</Link>
+            <Link to="/signup">Create Free Account</Link>
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-gray-700" onClick={toggleMobileMenu}>
+        <button className="md:hidden text-gray-700" onClick={toggleMobileMenu} aria-label="Toggle mobile menu">
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -53,17 +53,17 @@ const Header = () => {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link to="/" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Home</Link>
             <Link to="/about" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>About Us</Link>
-            <Link to="/courses" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Courses</Link>
+            <Link to="/courses" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Educational Courses</Link>
             <Link to="/kits" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Learning Kits</Link>
             <Link to="/schools" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>For Schools</Link>
-            <Link to="/blog" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Blog</Link>
-            <Link to="/contact" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Contact</Link>
+            <Link to="/blog" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Education Blog</Link>
+            <Link to="/contact" className="font-medium py-2 hover:text-paata-blue transition-colors" onClick={toggleMobileMenu}>Contact Us</Link>
             <div className="flex items-center space-x-4 pt-4">
               <Button asChild variant="outline" className="w-full rounded-full">
-                <Link to="/login" onClick={toggleMobileMenu}>Log In</Link>
+                <Link to="/login" onClick={toggleMobileMenu}>Log In To Your Account</Link>
               </Button>
               <Button asChild className="w-full rounded-full bg-paata-orange hover:bg-amber-500">
-                <Link to="/signup" onClick={toggleMobileMenu}>Sign Up</Link>
+                <Link to="/signup" onClick={toggleMobileMenu}>Create Free Account</Link>
               </Button>
             </div>
           </div>
