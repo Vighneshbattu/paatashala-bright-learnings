@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { equal, braces, brackets, percent, plus, minus, asterisk, divide, nacl, h2o, co2, parentheses } from 'lucide-react';
+import { Equal, Braces, Brackets, Percent, Plus, Minus, Asterisk, Divide, Parentheses, Flask, Beaker, TestTube } from 'lucide-react';
 
 interface SymbolProps {
   icon: React.ReactNode;
@@ -38,6 +38,25 @@ const Symbol: React.FC<SymbolProps> = ({ icon, title, description, color, delay 
   );
 };
 
+// Custom chemistry symbols
+const H2O: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={className}>
+    <span className="font-bold">H<sub>2</sub>O</span>
+  </div>
+);
+
+const CO2: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={className}>
+    <span className="font-bold">CO<sub>2</sub></span>
+  </div>
+);
+
+const NaCl: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={className}>
+    <span className="font-bold">NaCl</span>
+  </div>
+);
+
 const SubjectSymbols = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -70,35 +89,35 @@ const SubjectSymbols = () => {
   
   const mathSymbols = [
     { 
-      icon: <plus className="h-8 w-8 text-white" />, 
+      icon: <Plus className="h-8 w-8 text-white" />, 
       title: "Math Kit: Addition", 
       description: "A hands-on learning kit for exploring basic mathematical operations with interactive tools.",
       color: "bg-paata-blue",
       delay: 0
     },
     { 
-      icon: <minus className="h-8 w-8 text-white" />, 
+      icon: <Minus className="h-8 w-8 text-white" />, 
       title: "Math Kit: Subtraction", 
       description: "Explore subtraction concepts with physical manipulatives that make learning math fun.",
       color: "bg-paata-green",
       delay: 100
     },
     { 
-      icon: <asterisk className="h-8 w-8 text-white" />, 
+      icon: <Asterisk className="h-8 w-8 text-white" />, 
       title: "Math Kit: Multiplication", 
       description: "Interactive tools to understand multiplication principles through tangible examples.",
       color: "bg-paata-orange",
       delay: 200
     },
     { 
-      icon: <divide className="h-8 w-8 text-white" />, 
+      icon: <Divide className="h-8 w-8 text-white" />, 
       title: "Math Kit: Division", 
       description: "Visualize division concepts with our specially designed manipulative tools.",
       color: "bg-paata-teal",
       delay: 300
     },
     { 
-      icon: <percent className="h-8 w-8 text-white" />, 
+      icon: <Percent className="h-8 w-8 text-white" />, 
       title: "Math Kit: Percentages", 
       description: "Understand percentages and ratios through fun, interactive activities.",
       color: "bg-paata-purple",
@@ -108,21 +127,21 @@ const SubjectSymbols = () => {
   
   const chemistrySymbols = [
     { 
-      icon: <h2o className="h-8 w-8 text-white" />, 
+      icon: <H2O className="h-8 w-8 text-white flex items-center justify-center" />, 
       title: "Chemistry Kit: Water Properties", 
       description: "Explore the properties of water and its importance in chemical reactions.",
       color: "bg-paata-blue",
       delay: 100
     },
     { 
-      icon: <co2 className="h-8 w-8 text-white" />, 
+      icon: <CO2 className="h-8 w-8 text-white flex items-center justify-center" />, 
       title: "Chemistry Kit: Carbon Dioxide", 
       description: "Study carbon dioxide and its role in our atmosphere through safe experiments.",
       color: "bg-paata-green",
       delay: 200
     },
     { 
-      icon: <nacl className="h-8 w-8 text-white" />, 
+      icon: <NaCl className="h-8 w-8 text-white flex items-center justify-center" />, 
       title: "Chemistry Kit: Salt Chemistry", 
       description: "Discover the chemistry of salts and solutions with hands-on activities.",
       color: "bg-paata-orange",
@@ -132,28 +151,28 @@ const SubjectSymbols = () => {
   
   const codingSymbols = [
     { 
-      icon: <braces className="h-8 w-8 text-white" />, 
+      icon: <Braces className="h-8 w-8 text-white" />, 
       title: "Coding Kit: Functions", 
       description: "Learn the basics of functions and code blocks through physical programming activities.",
       color: "bg-paata-purple",
       delay: 200
     },
     { 
-      icon: <brackets className="h-8 w-8 text-white" />, 
+      icon: <Brackets className="h-8 w-8 text-white" />, 
       title: "Coding Kit: Arrays", 
       description: "Understand arrays and data structures with tactile programming exercises.",
       color: "bg-paata-pink",
       delay: 300
     },
     { 
-      icon: <parentheses className="h-8 w-8 text-white" />, 
+      icon: <Parentheses className="h-8 w-8 text-white" />, 
       title: "Coding Kit: Logic", 
       description: "Master logical operations and conditions with our interactive coding kit.",
       color: "bg-paata-teal",
       delay: 400
     },
     { 
-      icon: <equal className="h-8 w-8 text-white" />, 
+      icon: <Equal className="h-8 w-8 text-white" />, 
       title: "Coding Kit: Variables", 
       description: "Explore variables and data types through tangible programming activities.",
       color: "bg-paata-blue",
