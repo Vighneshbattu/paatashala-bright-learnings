@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { Equal, Braces, Brackets, Percent, Plus, Minus, Asterisk, Divide, Parentheses, Flask, Beaker, TestTube } from 'lucide-react';
+import { Equal, Braces, Brackets, Percent, Plus, Minus, Asterisk, Divide, Parentheses, Droplet, Atom, Flare } from 'lucide-react';
 
 interface SymbolProps {
   icon: React.ReactNode;
