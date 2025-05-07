@@ -1,238 +1,143 @@
+
 import React, { useEffect, useRef } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { Equal, Braces, Brackets, Percent, Plus, Minus, Asterisk, Divide, Parentheses, Droplet, Atom, Flare } from 'lucide-react';
+import { Equal, Braces, Brackets, Percent, Plus, Minus, Asterisk, Divide, Parentheses, Droplet, Atom, Flame } from 'lucide-react';
 
 interface SymbolProps {
   icon: React.ReactNode;
   title: string;
   description: string;
-  color: string;
-  delay: number;
+  category: 'math' | 'chemistry' | 'coding';
 }
 
-const Symbol: React.FC<SymbolProps> = ({ icon, title, description, color, delay }) => {
+const Symbol: React.FC<SymbolProps> = ({ icon, title, description, category }) => {
+  const colorClasses = {
+    math: 'bg-paata-blue-light text-paata-blue hover:bg-paata-blue hover:text-white',
+    chemistry: 'bg-paata-green-light text-paata-green hover:bg-paata-green hover:text-white',
+    coding: 'bg-paata-orange-light text-paata-orange hover:bg-paata-orange hover:text-white'
+  };
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div 
-          className={`symbol p-4 cursor-pointer rounded-full flex items-center justify-center ${color} 
-                      hover-scale shadow-md animate-scale-in`} 
-          style={{ 
-            animationDelay: `${delay}ms`,
-            width: '60px', 
-            height: '60px',
-            transition: 'all 0.3s ease'
-          }}
+        <div
+          className={`symbol flex items-center justify-center text-2xl font-bold w-16 h-16 rounded-full cursor-pointer transition-all duration-300 ${colorClasses[category]}`}
         >
           {icon}
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80">
-        <div className="space-y-2">
-          <h4 className="text-lg font-bold">{title}</h4>
-          <p className="text-sm text-gray-600">{description}</p>
+      <HoverCardContent className="w-72">
+        <div className="flex flex-col space-y-2">
+          <h3 className="font-semibold text-lg">{title}</h3>
+          <p className="text-gray-600 text-sm">{description}</p>
         </div>
       </HoverCardContent>
     </HoverCard>
   );
 };
 
-// Custom chemistry symbols
-const H2O: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={className}>
-    <span className="font-bold">H<sub>2</sub>O</span>
-  </div>
-);
-
-const CO2: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={className}>
-    <span className="font-bold">CO<sub>2</sub></span>
-  </div>
-);
-
-const NaCl: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={className}>
-    <span className="font-bold">NaCl</span>
-  </div>
-);
-
 const SubjectSymbols = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
+            const symbols = containerRef.current?.querySelectorAll('.symbol');
+            symbols?.forEach((symbol, i) => {
+              setTimeout(() => {
+                symbol.classList.add('animate-in');
+              }, i * 150);
+            });
+            observer.unobserve(entry.target);
           }
         });
       },
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      }
+      { threshold: 0.1 }
     );
-    
+
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
-    
+
     return () => {
       if (containerRef.current) {
         observer.unobserve(containerRef.current);
       }
     };
   }, []);
-  
+
   const mathSymbols = [
-    { 
-      icon: <Plus className="h-8 w-8 text-white" />, 
-      title: "Math Kit: Addition", 
-      description: "A hands-on learning kit for exploring basic mathematical operations with interactive tools.",
-      color: "bg-paata-blue",
-      delay: 0
-    },
-    { 
-      icon: <Minus className="h-8 w-8 text-white" />, 
-      title: "Math Kit: Subtraction", 
-      description: "Explore subtraction concepts with physical manipulatives that make learning math fun.",
-      color: "bg-paata-green",
-      delay: 100
-    },
-    { 
-      icon: <Asterisk className="h-8 w-8 text-white" />, 
-      title: "Math Kit: Multiplication", 
-      description: "Interactive tools to understand multiplication principles through tangible examples.",
-      color: "bg-paata-orange",
-      delay: 200
-    },
-    { 
-      icon: <Divide className="h-8 w-8 text-white" />, 
-      title: "Math Kit: Division", 
-      description: "Visualize division concepts with our specially designed manipulative tools.",
-      color: "bg-paata-teal",
-      delay: 300
-    },
-    { 
-      icon: <Percent className="h-8 w-8 text-white" />, 
-      title: "Math Kit: Percentages", 
-      description: "Understand percentages and ratios through fun, interactive activities.",
-      color: "bg-paata-purple",
-      delay: 400
-    }
+    { icon: <Plus size={28} />, title: "Math Addition Kit", description: "A hands-on learning kit for exploring basic addition operations with interactive tools." },
+    { icon: <Minus size={28} />, title: "Math Subtraction Kit", description: "Interactive tools for understanding subtraction concepts through engaging activities." },
+    { icon: <Asterisk size={28} />, title: "Math Multiplication Kit", description: "Visual and tactile resources for mastering multiplication tables and concepts." },
+    { icon: <Divide size={28} />, title: "Math Division Kit", description: "Practical materials to make division understandable and fun for all learning levels." },
+    { icon: <Percent size={28} />, title: "Math Percentages Kit", description: "Real-world applications to understand percentages, fractions, and decimals." }
   ];
-  
+
   const chemistrySymbols = [
-    { 
-      icon: <H2O className="h-8 w-8 text-white flex items-center justify-center" />, 
-      title: "Chemistry Kit: Water Properties", 
-      description: "Explore the properties of water and its importance in chemical reactions.",
-      color: "bg-paata-blue",
-      delay: 100
-    },
-    { 
-      icon: <CO2 className="h-8 w-8 text-white flex items-center justify-center" />, 
-      title: "Chemistry Kit: Carbon Dioxide", 
-      description: "Study carbon dioxide and its role in our atmosphere through safe experiments.",
-      color: "bg-paata-green",
-      delay: 200
-    },
-    { 
-      icon: <NaCl className="h-8 w-8 text-white flex items-center justify-center" />, 
-      title: "Chemistry Kit: Salt Chemistry", 
-      description: "Discover the chemistry of salts and solutions with hands-on activities.",
-      color: "bg-paata-orange",
-      delay: 300
-    }
+    { icon: <Atom size={28} />, title: "Atoms & Elements Kit", description: "Explore the building blocks of matter with models and interactive experiments." },
+    { icon: <Droplet size={28} />, title: "Solutions Kit", description: "Mix, separate, and analyze different solutions to understand chemical properties." },
+    { icon: <Flame size={28} />, title: "Chemical Reactions Kit", description: "Safe experiments demonstrating various chemical reactions and their principles." }
   ];
-  
+
   const codingSymbols = [
-    { 
-      icon: <Braces className="h-8 w-8 text-white" />, 
-      title: "Coding Kit: Functions", 
-      description: "Learn the basics of functions and code blocks through physical programming activities.",
-      color: "bg-paata-purple",
-      delay: 200
-    },
-    { 
-      icon: <Brackets className="h-8 w-8 text-white" />, 
-      title: "Coding Kit: Arrays", 
-      description: "Understand arrays and data structures with tactile programming exercises.",
-      color: "bg-paata-pink",
-      delay: 300
-    },
-    { 
-      icon: <Parentheses className="h-8 w-8 text-white" />, 
-      title: "Coding Kit: Logic", 
-      description: "Master logical operations and conditions with our interactive coding kit.",
-      color: "bg-paata-teal",
-      delay: 400
-    },
-    { 
-      icon: <Equal className="h-8 w-8 text-white" />, 
-      title: "Coding Kit: Variables", 
-      description: "Explore variables and data types through tangible programming activities.",
-      color: "bg-paata-blue",
-      delay: 500
-    }
+    { icon: <Braces size={28} />, title: "Functions & Methods Kit", description: "Learn about reusable code blocks through hands-on programming activities." },
+    { icon: <Brackets size={28} />, title: "Arrays & Collections Kit", description: "Explore data structures using visual and interactive programming exercises." },
+    { icon: <Parentheses size={28} />, title: "Logic & Conditions Kit", description: "Master decision making in code through engaging programming challenges." },
+    { icon: <Equal size={28} />, title: "Variables & Assignment Kit", description: "Understand how to store and manipulate data in programming." }
   ];
-  
+
   return (
     <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Interactive Learning Subjects</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our specialized learning kits designed for different subjects. Hover over each symbol to learn more!
-          </p>
-        </div>
-        
-        <div ref={containerRef} className="opacity-0 transition-opacity duration-1000">
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold mb-6 text-center">Mathematics</h3>
-            <div className="flex flex-wrap gap-8 justify-center">
+      <div className="container mx-auto px-4" ref={containerRef}>
+        <h2 className="text-3xl font-bold text-center mb-12">Explore Our Subject Kits</h2>
+
+        <div className="space-y-12">
+          {/* Math Symbols */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-6 text-center text-paata-blue">Mathematics Kits</h3>
+            <div className="flex flex-wrap justify-center gap-6">
               {mathSymbols.map((symbol, index) => (
-                <Symbol
+                <Symbol 
                   key={`math-${index}`}
                   icon={symbol.icon}
                   title={symbol.title}
                   description={symbol.description}
-                  color={symbol.color}
-                  delay={symbol.delay}
+                  category="math"
                 />
               ))}
             </div>
           </div>
-          
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold mb-6 text-center">Chemistry</h3>
-            <div className="flex flex-wrap gap-8 justify-center">
+
+          {/* Chemistry Symbols */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-6 text-center text-paata-green">Chemistry Kits</h3>
+            <div className="flex flex-wrap justify-center gap-6">
               {chemistrySymbols.map((symbol, index) => (
-                <Symbol
-                  key={`chem-${index}`}
+                <Symbol 
+                  key={`chemistry-${index}`}
                   icon={symbol.icon}
                   title={symbol.title}
                   description={symbol.description}
-                  color={symbol.color}
-                  delay={symbol.delay}
+                  category="chemistry"
                 />
               ))}
             </div>
           </div>
-          
-          <div>
-            <h3 className="text-2xl font-bold mb-6 text-center">Coding</h3>
-            <div className="flex flex-wrap gap-8 justify-center">
+
+          {/* Coding Symbols */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-6 text-center text-paata-orange">Coding Kits</h3>
+            <div className="flex flex-wrap justify-center gap-6">
               {codingSymbols.map((symbol, index) => (
-                <Symbol
-                  key={`code-${index}`}
+                <Symbol 
+                  key={`coding-${index}`}
                   icon={symbol.icon}
                   title={symbol.title}
                   description={symbol.description}
-                  color={symbol.color}
-                  delay={symbol.delay}
+                  category="coding"
                 />
               ))}
             </div>
