@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
-import { Calendar, Clock, MapPin, ChartBar, Star, User, Schools } from 'lucide-react';
+import { Calendar, Clock, MapPin, ChartBar, Star, User, School } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -126,7 +125,7 @@ const TeacherDashboard = () => {
                           <div key={session.id} className="flex flex-col md:flex-row md:items-center p-4 border rounded-lg border-gray-200 hover:bg-gray-50 transition-colors">
                             <div className="flex-1 mb-3 md:mb-0">
                               <div className="flex items-center gap-2 mb-1">
-                                <Schools className="h-5 w-5 text-paata-blue" />
+                                <School className="h-5 w-5 text-paata-blue" />
                                 <h3 className="font-semibold text-lg">{session.schoolName}</h3>
                               </div>
                               <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 text-sm text-gray-600">

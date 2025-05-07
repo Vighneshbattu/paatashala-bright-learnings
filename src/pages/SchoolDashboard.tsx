@@ -1,10 +1,9 @@
-
 import React from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, MapPin, ChartBar, User, Users, Schools } from 'lucide-react';
+import { Calendar, Clock, MapPin, ChartBar, User, Users, School } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -161,7 +160,7 @@ const SchoolDashboard = () => {
               <div className="flex justify-center mb-3">
                 <Avatar className="h-20 w-20">
                   <div className="bg-paata-blue-light h-full w-full rounded-full flex items-center justify-center">
-                    <Schools className="h-10 w-10 text-paata-blue" />
+                    <School className="h-10 w-10 text-paata-blue" />
                   </div>
                 </Avatar>
               </div>
